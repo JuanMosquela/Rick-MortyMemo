@@ -40,9 +40,7 @@ const printCards = (characterArray) => {
 
 let validation = []
 
-document.addEventListener('click', (e) => {
-
-    
+document.addEventListener('click', (e) => {   
     
     
     if(e.target.matches('.card') || e.target.matches('.card *')){

@@ -1,14 +1,22 @@
+
+body{
+    background: url(./img/background.jpg) center;
+    
+}
+
 .container{
-    display: flex;
-    flex-direction: column;
+    display: flex;    
     justify-content: center;
     align-items: center;
+    min-height: 95vh;
+    
     
 
 }
 
 h1{
     text-transform: uppercase;
+    color: #FFF;
 }
 
 
@@ -19,10 +27,11 @@ h1{
     align-items: center;
     flex-wrap: wrap;    
     gap: 1.5rem;
-    background-color: black;
+    background-color: #fff;
     padding: 3rem 0;
     border-radius: 2rem;
     perspective: 200px;
+    
 }
 
 
@@ -35,7 +44,8 @@ h1{
     position: relative;
     transform-style: preserve-3d;
     transition: .3s;
-    perspective: 200px;    
+    perspective: 200px; 
+    
 
 }
 
