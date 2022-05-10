@@ -1,0 +1,98 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+
+h1{
+    text-transform: uppercase;
+}
+
+
+.container-cards{
+    max-width: 1400px;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;    
+    gap: 1.5rem;
+    background-color: black;
+    padding: 3rem 0;
+    border-radius: 2rem;
+    perspective: 200px;
+}
+
+
+.card{
+       
+    border-radius: 1rem;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: .3s;
+    perspective: 200px;    
+
+}
+
+
+.card div{
+    width: 100%;
+    height: 100%;
+    position: absolute;     
+    transition: .6s; 
+    backface-visibility: hidden;    
+   
+}
+
+.card .front img, .back img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+    
+}
+
+.info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.card.flip .front{
+    transform: rotateY(360deg);
+    
+}
+
+.card.flip .back{
+    transform: rotateY(180deg);
+    
+}
+
+.card.hidden .front{
+    opacity: 0;
+    visibility: hidden;
+    
+    
+}
+
+.card.hidden .back{
+    opacity: 0;
+    visibility: hidden;
+    
+    
+}
+
+
+
+
+
+
+
+
