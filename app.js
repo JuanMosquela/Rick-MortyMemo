@@ -14,12 +14,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     Swal.fire({
         imageUrl: './img/start.jpg',
-        imageHeight: 400,
+        imageHeight: 540,
         title: 'Bienvendio a Rick y Morty Memorys!',
-        text: 'Encuentra las coincidencias de cada personaje',
-        
-        confirmButtonText: 'Cool',
-        allowOutsideClick:'false'
+        text: 'Encuentra las coincidencias de cada personaje',  
+        width: '80%',      
+        confirmButtonText: 'Empezar',
+        allowOutsideClick:'false',
+        // grow:'fullscreen',
+        allowOutsideClick: false
     })
 
     const fetchData = async () => {
@@ -29,8 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
             const data = await url.json()
             const characters = data;        
-            const characterArray = [...characters, ...characters]
-            
+            const characterArray = [...characters, ...characters]            
             printCards(characterArray)
         }
     
@@ -61,35 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', (e) => {   
         
         
-        if(e.target.matches('.card') || e.target.matches('.card *')){
+        if(e.target.matches('.card') || e.target.matches('.card *')){           
     
-            const cardTocar = document.querySelectorAll('img')
-            
+            const card = e.target.parentElement.parentElement    
+            card.classList.add('flip')    
+            validation.push(card)           
     
-            const card = e.target.parentElement.parentElement
-    
-            const cardID = e.target.parentElement.parentElement.attributes[1].value        
-    
-            card.classList.add('flip')
-    
-            validation.push(card)
-    
-            
-            
-            // if(cardID === card.dataset.id){
-            //     console.log('mismas')
-            //     setTimeout(() => {
-            //         validation[0].classList.remove('flip')
-                    
-            //     }, 1000);
-            //     return 
-            // }
-    
-             
-            console.log(cardTocar.style)
-    
-            if(validation.length === 2){
-                
+            if(validation.length === 2){                
                 
                 if(validation[0].dataset.id == validation[1].dataset.id){
                     setTimeout(() => {
@@ -108,8 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                     }, 1000);                
                 }            
-            }       
-                          
+            }                         
         }  
         
         const plusOne = () => {
@@ -119,16 +97,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if(points === 8){
                 Swal.fire({
                     imageUrl: './img/Win.jpg',
-                    imageHeight: 400,
-                    title: 'Ganaste!',
-                    text: 'Completaste la aventura exitosamente',
-                    icon: 'valid',
-                    confirmButtonText: 'Cool',
-                    allowOutsideClick:'false'
+                    imageHeight: 540,
+                    title: 'Wubba lubba dub dub!',
+                    text: 'Has encontrado todas las coincidencias',  
+                    width: '80%',      
+                    confirmButtonText: 'Jugar otra vez',
+                    allowOutsideClick:'false',
+                    // grow:'fullscreen',
+                    allowOutsideClick: false
                 })
-            }
-            
-    
+            }    
         }
     
         const wrongCard = () => {
@@ -140,19 +118,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if(lifePoints === 0){
                 Swal.fire({
                     imageUrl: './img/Lost.jpg',
-                    imageHeight: 400,
+                    imageHeight: 540,
                     title: 'Perdiste!',
-                    text: 'Intenta encontrar las coincidncias sin perder tantas vidas',
-                   
-                    confirmButtonText: 'Cool',
-                    allowOutsideClick:'false'
+                    text: 'Intenta encontrar todas las coincidencias sin perder todas las vidas',  
+                    width: '80%',      
+                    confirmButtonText: 'Volver a intentarlo',
+                    allowOutsideClick:'false',
+                    // grow:'fullscreen',
+                    allowOutsideClick: false
                 })
-            }
-    
+            }    
         }
     })
-
-
-
-
 })
