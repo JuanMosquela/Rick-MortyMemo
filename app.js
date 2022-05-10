@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     Swal.fire({
         imageUrl: './img/start.jpg',
         imageHeight: 540,
-        title: 'Bienvendio a Rick y Morty Memorys!',
+        title: 'Bienvenido a Rick y Morty Memorys!',
         text: 'Encuentra las coincidencias de cada personaje',  
         width: '80%',      
         confirmButtonText: 'Empezar',
