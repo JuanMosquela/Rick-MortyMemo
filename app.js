@@ -1,7 +1,10 @@
 const  containerCards = document.querySelector('.container-cards')
 const cards = document.querySelectorAll('.card')
 const template = document.querySelector('template').content;
-const fragment = document.createDocumentFragment()
+const fragment = document.createDocumentFragment();
+let points = 0;
+let lifePoints = 12;
+
 
 
 
@@ -35,7 +38,8 @@ const printCards = (characterArray) => {
         fragment.appendChild(clone)
     })
 
-    containerCards.appendChild(fragment)    
+    containerCards.appendChild(fragment) 
+    console.log( containerCards)
 }
 
 let validation = []
@@ -45,6 +49,9 @@ document.addEventListener('click', (e) => {
     
     if(e.target.matches('.card') || e.target.matches('.card *')){
 
+        const cardTocar = document.querySelectorAll('img')
+        
+
         const card = e.target.parentElement.parentElement
 
         const cardID = e.target.parentElement.parentElement.attributes[1].value        
@@ -52,6 +59,8 @@ document.addEventListener('click', (e) => {
         card.classList.add('flip')
 
         validation.push(card)
+
+        
         
         // if(cardID === card.dataset.id){
         //     console.log('mismas')
@@ -61,27 +70,54 @@ document.addEventListener('click', (e) => {
         //     }, 1000);
         //     return 
         // }
-        
 
-        if(validation.length >= 2){
+         
+        console.log(cardTocar.style)
+
+        if(validation.length === 2){
+            
+            
             if(validation[0].dataset.id == validation[1].dataset.id){
                 setTimeout(() => {
                     
-                    validation[0].classList.add('hidden')
-                    validation[1].classList.add('hidden')
-                    validation = []
+                    validation.forEach(el => el.style.pointerEvents = 'none')
+                    validation = [];
+                    plusOne()                    
                     
                 }, 1000);
             }else{
                 setTimeout(() => {
                     
-                    validation[0].classList.remove('flip')
-                    validation[1].classList.remove('flip')
+                    validation.forEach(el => el.classList.remove('flip'))                   
                     validation = []
+                    wrongCard()
                     
                 }, 1000);                
             }            
         }       
                       
-    }    
+    }  
+    
+    const plusOne = () => {
+        const pointsContainer = document.getElementById('points')        
+        points++;
+        pointsContainer.textContent = points;
+        if(points === 9){
+            console.log('ganaste el juego')
+        }
+        
+
+    }
+
+    const wrongCard = () => {
+
+        const lifeContainer = document.getElementById('lifes');
+        lifePoints--;
+        lifeContainer.textContent = lifePoints
+
+        if(lifePoints === 0){
+            console.log('perdiste el juego')
+        }
+
+    }
 })
