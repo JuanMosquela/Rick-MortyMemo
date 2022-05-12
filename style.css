@@ -23,8 +23,9 @@ p{
     display: flex;    
     justify-content: center;
     align-items: center;
-    min-height: 95vh;
+    padding: 2rem;    
     gap: 2rem;
+    min-height: 100vh;
     
     
 
@@ -38,24 +39,22 @@ p{
 .life-points-container{
     
     padding: 1rem 2rem;
-    width: 200px;
-     font-size: 2rem;
-     border-radius: 1.5rem;
-     background-color: rgba(255, 255, 255);
-     backdrop-filter: blur(4px);
+    width: 200px;    
+    font-size: 2rem;
+    border-radius: 1.5rem;
+    background-color: rgba(255, 255, 255);
+    backdrop-filter: blur(4px);
     box-shadow: 2px 5px 15px 0px rgba(0,0,0,0.4);
     display: flex;
     flex-direction: column;    
-    justify-content: space-between;
-    align-self: flex-start;
-    margin-top: 2rem;
-    
+    justify-content: space-between;  
      
 }
 
 .life-points-container li{
     display: flex;
     justify-content: space-between;
+    
     margin-top: 1rem;
     
 
@@ -95,10 +94,10 @@ h1{
 .container-cards{
        
     display: grid;
-    padding: 2rem;
+    padding: 1rem;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, 1fr); 
-    gap: 1rem;    
+    gap: .5rem;   
     background-color: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(4px);
     box-shadow: 2px 5px 15px 0px rgba(0,0,0,0.4);    

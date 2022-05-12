@@ -92,10 +92,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 if(validation[0].dataset.id == validation[1].dataset.id){
                     validation.forEach(el => {
+
+                        setTimeout(() => {
+                            document.querySelectorAll('.card').forEach(el => el.style.pointerEvents='auto')
+                        
+                        
+                        }, 1000);
+
                         el.style.pointerEvents = 'none';
+                        document.querySelectorAll('.card').forEach(el => el.style.pointerEvents='none')
                         el.classList.add('valid')
                         validation = []
                     })
+                    
                     
                     plusOne()  
                 }else{
@@ -107,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         validation = []
                         
                         
-                    }, 600);                
+                    }, 1000);                
                 } 
 
                 
