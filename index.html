@@ -14,42 +14,44 @@
 <body>
 
    <main>
-    <section class="container">
+        <section class="container">
 
-        <div class="d-flex align-items-center d-none c-light fs-1" id="loading">
-            
-            <div class="spinner-border ms-auto" role="status" aria-hidden="true">
-            </div>
-        </div>
-        
-        <div class="container-cards"></div>
-       
-        <div class="life-points-container">
-            <li><i class="fa-solid fa-heart"></i><span id="lifes">12</span></li>
-            <li><i class="fa-solid fa-coins"></i><span id="points">0</span></li>
-            <button id="reload" class="btn">Reaudar</button>
-            
-        </div>
-        
-    </section>
-
-    <template>
-        <div class="card">
-            <div class="front">
-                <img src="./img/images.jfif" alt="">
-                <div class="info">
-                    <h2>Rick Sanchez</h2>
-                    
+            <!-- <div class="d-flex align-items-center d-none c-light fs-1" id="loading">
+                
+                <div class="spinner-border ms-auto" role="status" aria-hidden="true">
                 </div>
-               
+            </div> -->
+            
+            <div class="container-cards"></div>
+        
+            <div class="life-points-container">
+                <div class="points-container">
+                    <li><i class="fa-solid fa-heart"></i><span id="lifes">12</span></li>
+                    <li><i class="fa-solid fa-coins"></i><span id="points">0</span></li>
+                </div>
+                <button id="reload" class="btn">Reaudar</button>
+                
             </div>
-            <div class="back">
-                <img src="./img/back.jpg" alt="">
+            
+        </section>
+
+        <template>
+            <div class="card">
+                <div class="front">
+                    <img src="./img/images.jfif" alt="">
+                    <div class="info">
+                        <h2>Rick Sanchez</h2>
+                        
+                    </div>
+                
+                </div>
+                <div class="back">
+                    <img src="./img/back.jpg" alt="">
+                </div>
             </div>
-        </div>
 
 
-    </template>
+        </template>
    </main>
 
 
