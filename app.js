@@ -2,6 +2,8 @@ const  containerCards = document.querySelector('.container-cards')
 const cards = document.querySelectorAll('.card')
 const template = document.querySelector('template').content;
 const fragment = document.createDocumentFragment();
+const lifeContainer = document.getElementById('lifes');
+const pointsContainer = document.getElementById('points')  
 let points = 0;
 let lifePoints = 12;
 
@@ -52,7 +54,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', (e) => {  
 
         if(e.target.matches('#reload')){
-            location.reload()
+            lifePoints = 12;
+            lifeContainer.innerHTML = lifePoints;
+            points= 0;
+            pointsContainer.innerHTML = points;
+            document.querySelectorAll('.card').forEach(el => el.classList.remove('flip'))
+            
+           
         } 
         
         
@@ -65,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const wrongCard = () => {
     
-                const lifeContainer = document.getElementById('lifes');
+                
                 lifePoints--;
                 lifeContainer.textContent = lifePoints
         
@@ -102,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                 } 
 
-                const pointsContainer = document.getElementById('points')        
+                      
                 points++;
                 pointsContainer.textContent = points;
                 
@@ -119,13 +127,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         }, 1000);
 
-                        plusOne()
+                        
 
                         el.style.pointerEvents = 'none';
                         document.querySelectorAll('.card').forEach(el => el.style.pointerEvents='none')
                         el.classList.add('valid')
                         validation = []
-                    })                  
+                    })  
+                    plusOne()                
 
                 }else{
 
