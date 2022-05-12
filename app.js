@@ -6,12 +6,7 @@ let points = 0;
 let lifePoints = 12;
 
 
-
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
-
     const loading = (state) => {
         const loader = document.getElementById('loading');
     
@@ -20,12 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }else{
             loader.classList.add('d-none')
         }
-    }
+    }   
 
-   
-
-    const fetchData = async () => {
-    
+    const fetchData = async () => {    
         try{
             loading(true)
             const url = await fetch('https://rickandmortyapi.com/api/character/1,2,3,4,5,7,8,636')
@@ -34,8 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const characters = data;        
             const characterArray = [...characters, ...characters]            
             printCards(characterArray)
-        }
-    
+        }    
         catch{
             console.log('error')
         }
@@ -44,12 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    fetchData()
-
+    fetchData()    
     
-    
-    const printCards = (characterArray) => {
-        
+    const printCards = (characterArray) => {        
         characterArray.sort(() => {
             return Math.random() - 0.5 }).forEach(character => {
             const clone = template.cloneNode(true)        
@@ -64,27 +52,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     let validation = []
-    
-    document.addEventListener('click', (e) => {  
+    const validCards = []
 
+    const refreshPage = () => {
+        location.reload()
+    }
+    
+    document.addEventListener('click', (e) => { 
         if(e.target.matches('#reload')){
-            location.reload()
-        } 
+            refreshPage()
+        }         
         
-        
-        if(e.target.matches('.card') || e.target.matches('.card *')){           
-    
-            const card = e.target.parentElement.parentElement    
-            card.classList.add('flip')    
-            validation.push(card)          
+        if(e.target.matches('.card') || e.target.matches('.card *')){    
+            const card = e.target.parentElement.parentElement;   
+            card.classList.add('flip');    
+            validation.push(card);           
             
-            
-            const wrongCard = () => {
-    
+            const wrongCard = () => {    
                 const lifeContainer = document.getElementById('lifes');
                 lifePoints--;
-                lifeContainer.textContent = lifePoints
-        
+                lifeContainer.textContent = lifePoints;        
                 if(lifePoints === 0){
                     Swal.fire({
                         title: 'Error!',
@@ -96,61 +83,43 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.querySelectorAll('.card').forEach(card => {
                         card.style.pointerEvents='none'
                     })
-                } 
-            }
-            
-           
+                }
+            }         
 
             const plusOne = () => {
-
+                points++;
+                const pointsContainer = document.getElementById('points')        
+                pointsContainer.textContent = points; 
+                console.log(points)
                 if(points === 8){
                     Swal.fire({
                         title: 'Ganaste!',
                         text: 'Do you want to continue',
                         icon: 'success',
                         confirmButtonText: 'Cool'
-                    })                    
-                    
-                    document.querySelectorAll('.card').forEach(el => {
-                        el.style.pointerEvents='none'
-                        
-                    })                  
+                    })    
                     
                 } 
 
-                const pointsContainer = document.getElementById('points')        
-                points++;
-                pointsContainer.textContent = points;
-                
-            }   
+                               
+            }      
+            
     
             if(validation.length === 2){                
                 
                 if(validation[0].dataset.id === validation[1].dataset.id){
-                    validation.forEach(el => {
-                         
+                    validation.forEach(el => {                                                
 
-                        setTimeout(() => {
-                            document.querySelectorAll('.card').forEach(el => el.style.pointerEvents='auto')                        
-                        
-                        }, 1000);
-
-                        
-
-                        el.style.pointerEvents = 'none';
-                        document.querySelectorAll('.card').forEach(el => el.style.pointerEvents='none')
-                        el.classList.add('valid')
+                        el.style.pointerEvents = 'none';                        
+                        validCards.push(el)                        
+                        el.classList.add('valid')                        
                         validation = []
                     })   
                     plusOne()               
 
                 }else{
 
-                    
-
-
-                    setTimeout(() => {                    
-                        
+                    setTimeout(() => {                       
                         validation.forEach(el => el.classList.remove('flip'))                    
                         wrongCard()
                         validation = []                        

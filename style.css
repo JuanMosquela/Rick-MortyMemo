@@ -38,7 +38,7 @@ p{
     padding: 1rem 2rem;
     width: 200px;    
     font-size: 2rem;
-    border-radius: 1.5rem;
+    border-radius: .5rem;
     background-color: rgba(255, 255, 255);
     backdrop-filter: blur(4px);
     box-shadow: 2px 5px 15px 0px rgba(0,0,0,0.4);
@@ -59,10 +59,15 @@ p{
     padding: 1rem 2rem;
     color: #FFF;
     font-size: 1.2rem;
-    border-radius: .5rem;
+    border-radius: .2rem;
     border: none;
     cursor: pointer;
-}    
+} 
+
+.btn:hover{
+    background-color: rgb(18, 145, 18);
+    color: #FFF;
+}
 
 .life-points-container li:nth-child(1) i{
     color: rgb(243, 57, 57);
@@ -98,8 +103,7 @@ h1{
     overflow: hidden;
     position: relative;
     transform-style: preserve-3d;
-    background-color: transparent;
-     
+    background-color: transparent;     
     border: none;   
     transition: .3s;
     perspective: 200px; 
