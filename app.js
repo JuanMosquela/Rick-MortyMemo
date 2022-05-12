@@ -109,11 +109,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         confirmButtonText: 'Cool'
                     })                   
                 }                                
-            }      
+            }  
+            
+            if(validation.length === 1){
+                validation[0].style.pointerEvents='none'
+            }
             
     
-            if(validation.length === 2){  
-                             
+            if(validation.length === 2){ 
+
+                validation.forEach(el => el.style.pointerEvents='auto')                            
                 
                 if(validation[0].dataset.id === validation[1].dataset.id){
                     
