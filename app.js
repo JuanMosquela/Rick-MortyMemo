@@ -18,19 +18,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    // const loading = (state) => {
-    //     const loader = document.getElementById('loading');
+    const loading = (state) => {
+        const loader = document.getElementById('loading');
     
-    //     if(state){
-    //         loader.classList.remove('d-none')
-    //     }else{
-    //         loader.classList.add('d-none')
-    //     }
-    // }   
+        if(state){
+            loader.classList.remove('d-none')
+        }else{
+            loader.classList.add('d-none')
+        }
+    }   
 
     const fetchData = async () => {    
         try{
-            // loading(true)
+            loading(true)
             const url = await fetch('https://rickandmortyapi.com/api/character/1,2,3,4,5,7,8,636')
     
             const data = await url.json()
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('error')
         }
         finally{
-            // loading(false)
+            loading(false)
         }
     }
     
