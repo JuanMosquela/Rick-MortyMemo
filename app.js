@@ -53,8 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return Math.random() - 0.5 }).forEach(character => {
             const clone = template.cloneNode(true)        
             clone.querySelector('img').setAttribute('src', character.image);
-            clone.querySelector('.card').dataset.id = character.id;        
-            clone.querySelector('h2').innerHTML = character.name;
+            clone.querySelector('.card').dataset.id = character.id;           
             fragment.appendChild(clone)
         })
     
@@ -124,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         validCards.push(el)                        
                         el.classList.add('valid')                        
                         validation = []
-                        document.querySelectorAll('.card').forEach(el => el.style.pointerEvents='auto')
+                        
                     })   
                     plusOne()               
 
