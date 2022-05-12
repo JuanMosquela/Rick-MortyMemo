@@ -26,15 +26,7 @@ p{
     padding: 2rem;    
     gap: 2rem;
     min-height: 100vh;
-    
-    
-
 }
-
-
-
-
-
 
 .life-points-container{
     
@@ -53,11 +45,8 @@ p{
 
 .life-points-container li{
     display: flex;
-    justify-content: space-between;
-    
-    margin-top: 1rem;
-    
-
+    justify-content: space-between;    
+    margin-top: 1rem; 
 }
 
 .btn{
@@ -68,11 +57,7 @@ p{
     border-radius: .5rem;
     border: none;
     cursor: pointer;
-}
-
-
-    
-    
+}    
 
 .life-points-container li:nth-child(1) i{
     color: rgb(243, 57, 57);
@@ -83,16 +68,12 @@ p{
     margin-bottom: 2rem;
 }
 
-
-
 h1{
     text-transform: uppercase;
     color: #FFF;
 }
 
-
-.container-cards{
-       
+.container-cards{       
     display: grid;
     padding: 1rem;
     grid-template-columns: repeat(4, 1fr);
@@ -102,13 +83,10 @@ h1{
     backdrop-filter: blur(4px);
     box-shadow: 2px 5px 15px 0px rgba(0,0,0,0.4);    
     border-radius: 2rem;
-    perspective: 200px;
-    
+    perspective: 200px;    
 }
 
-
-.card{
-       
+.card{       
     border-radius: .5rem;
     width: 180px;
     height: 180px;
@@ -118,13 +96,11 @@ h1{
     background-color: black;    
     transition: .3s;
     perspective: 200px; 
-    cursor: pointer;    
-
+    cursor: pointer;
 }
 
 .card:hover{
     box-shadow: 3px 3px 16px rgba(0,0,0,0.6);
-
 }
 
 .card div{

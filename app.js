@@ -60,16 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
             const card = e.target.parentElement.parentElement    
             card.classList.add('flip')    
-            validation.push(card)
+            validation.push(card)          
             
-            const plusOne = () => {
-                const pointsContainer = document.getElementById('points')        
-                points++;
-                pointsContainer.textContent = points;
-                if(points === 8){
-                    
-                }    
-            }   
             
             const wrongCard = () => {
     
@@ -78,59 +70,77 @@ document.addEventListener('DOMContentLoaded', () => {
                 lifeContainer.textContent = lifePoints
         
                 if(lifePoints === 0){
-                    console.log('perdiste el juego')
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Do you want to continue',
+                        icon: 'error',
+                        confirmButtonText: 'Cool'
+                    })
+                    
                     document.querySelectorAll('.card').forEach(card => {
                         card.style.pointerEvents='none'
                     })
-                    
-
-                }    
+                } 
             }
+            
+           
+
+            const plusOne = () => {
+
+                if(points === 8){
+                    Swal.fire({
+                        title: 'Ganaste!',
+                        text: 'Do you want to continue',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })                    
+                    
+                    document.querySelectorAll('.card').forEach(el => {
+                        el.style.pointerEvents='none'
+                        
+                    })                  
+                    
+                } 
+
+                const pointsContainer = document.getElementById('points')        
+                points++;
+                pointsContainer.textContent = points;
+                
+            }   
     
-            if(validation.length === 2){               
+            if(validation.length === 2){                
                 
-                
-                if(validation[0].dataset.id == validation[1].dataset.id){
+                if(validation[0].dataset.id === validation[1].dataset.id){
                     validation.forEach(el => {
+                         
 
                         setTimeout(() => {
-                            document.querySelectorAll('.card').forEach(el => el.style.pointerEvents='auto')
-                        
+                            document.querySelectorAll('.card').forEach(el => el.style.pointerEvents='auto')                        
                         
                         }, 1000);
+
+                        plusOne()
 
                         el.style.pointerEvents = 'none';
                         document.querySelectorAll('.card').forEach(el => el.style.pointerEvents='none')
                         el.classList.add('valid')
                         validation = []
-                    })
-                    
-                    
-                    plusOne()  
+                    })                  
+
                 }else{
-                    setTimeout(() => {                        
+
+                    
+
+
+                    setTimeout(() => {                    
                         
-                        validation.forEach(el => el.classList.remove('flip'))                   
-                        
+                        validation.forEach(el => el.classList.remove('flip'))                    
                         wrongCard()
-                        validation = []
-                        
+                        validation = []                        
                         
                     }, 1000);                
-                } 
-
-                
-                
-                
-                
-                
-            } 
-                                
-        } 
-        
-        
-        
-    
-        
+                }               
+            }                                 
+        }         
     })
 })
