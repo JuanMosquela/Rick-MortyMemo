@@ -106,6 +106,7 @@ h1{
 .card{       
     border-radius: .5rem;
     
+    
     height: 160px;
     overflow: hidden;
     position: relative;
@@ -250,8 +251,8 @@ h1{
         position: absolute;
         left: 10px;
         bottom: 20px;
-        padding: 1rem;
-         font-size: 1rem;
+        padding: .5rem;
+         font-size: .8rem;
     }
 }
 
