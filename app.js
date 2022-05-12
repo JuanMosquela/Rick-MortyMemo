@@ -3,20 +3,17 @@ const cards = document.querySelectorAll('.card')
 const template = document.querySelector('template').content;
 const fragment = document.createDocumentFragment();
 let points = 0;
-let lifePoints = 12;
+let lifePoints = 10;
 
 
 document.addEventListener('DOMContentLoaded', () => {
 
     Swal.fire({
-        title: 'Bienvendio al juego de Rick y Morty!',
-        text: 'Encontra todos los pares de personajes para pasar la aventura',
+        title: 'Memorias de Rick y Morty!',
+        text: 'Encontra los parejas de cada personaje para poder ganar',
         imageUrl:'./img/start.jpg',
-        confirmButtonText: 'Cool'
+        confirmButtonText: 'Empezar a jugar'
     })
-
-
-
 
     const loading = (state) => {
         const loader = document.getElementById('loading');
@@ -30,13 +27,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const fetchData = async () => {    
         try{
-            loading(true)
-            const url = await fetch('https://rickandmortyapi.com/api/character/1,2,3,4,5,7,8,636')
-    
+            loading(true);
+            const url = await fetch('https://rickandmortyapi.com/api/character/1,2,3,4,5,7,8,636');    
             const data = await url.json()
             const characters = data;        
-            const characterArray = [...characters, ...characters]            
-            printCards(characterArray)
+            const characterArray = [...characters, ...characters];          
+            printCards(characterArray);
         }    
         catch{
             console.log('error')
@@ -104,8 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     Swal.fire({
                         imageUrl: './img/Win.jpg',
                         title: 'Ganaste!',
-                        text: 'Do you want to continue',
-                       
+                        text: 'Do you want to continue',                       
                         confirmButtonText: 'Cool'
                     })                   
                 }                                
@@ -113,33 +108,27 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if(validation.length === 1){
                 validation[0].style.pointerEvents='none'
-            }
-            
+            }            
     
             if(validation.length === 2){ 
+                validation.forEach(el => el.style.pointerEvents='auto')   
 
-                validation.forEach(el => el.style.pointerEvents='auto')                            
-                
-                if(validation[0].dataset.id === validation[1].dataset.id){
-                    
-                    validation.forEach(el => {                                                
-
+                if(validation[0].dataset.id === validation[1].dataset.id){                    
+                    validation.forEach(el => {
                         el.style.pointerEvents = 'none';                        
-                        validCards.push(el)                        
-                        el.classList.add('valid')                        
+                        validCards.push(el);                        
+                        el.classList.add('valid');                        
                         validation = []
                         
                     })   
                     plusOne()               
 
                 }else{
-                    document.querySelectorAll('.card').forEach(el => el.style.pointerEvents='none')
-
+                    document.querySelectorAll('.card').forEach(el => el.style.pointerEvents='none');
                     setTimeout(() => {
-                        document.querySelectorAll('.card').forEach(el => el.style.pointerEvents='auto')  
-                                              
-                        validation.forEach(el => el.classList.remove('flip'))                    
-                        wrongCard()
+                        document.querySelectorAll('.card').forEach(el => el.style.pointerEvents='auto');                                              
+                        validation.forEach(el => el.classList.remove('flip'));                    
+                        wrongCard();
                         validation = []                        
                         
                     }, 1000);                
