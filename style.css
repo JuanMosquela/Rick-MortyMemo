@@ -74,11 +74,11 @@ p{
 }
 
 .life-points-container li:nth-child(1) i{
-    color: rgb(243, 57, 57);
+    color: rgb(240, 13, 13);
 }
 
 .life-points-container li:nth-child(2) i{
-    color: rgb(135, 185, 185);
+    color: rgb(229, 243, 28);
     margin-bottom: 2rem;
 }
 
