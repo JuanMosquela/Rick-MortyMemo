@@ -113,21 +113,27 @@ document.addEventListener('DOMContentLoaded', () => {
             }      
             
     
-            if(validation.length === 2){                
+            if(validation.length === 2){  
+                             
                 
                 if(validation[0].dataset.id === validation[1].dataset.id){
+                    
                     validation.forEach(el => {                                                
 
                         el.style.pointerEvents = 'none';                        
                         validCards.push(el)                        
                         el.classList.add('valid')                        
                         validation = []
+                        document.querySelectorAll('.card').forEach(el => el.style.pointerEvents='auto')
                     })   
                     plusOne()               
 
                 }else{
+                    document.querySelectorAll('.card').forEach(el => el.style.pointerEvents='none')
 
-                    setTimeout(() => {                       
+                    setTimeout(() => {
+                        document.querySelectorAll('.card').forEach(el => el.style.pointerEvents='auto')  
+                                              
                         validation.forEach(el => el.classList.remove('flip'))                    
                         wrongCard()
                         validation = []                        
