@@ -7,8 +7,16 @@
     list-style: none;
 }
 body{
-    background: url(./img/background.jpg) center;
+    background: url(./img/background.jpg) center no-repeat;
+    background-size: cover;
     
+    
+}
+
+
+
+p{
+    color: #FFF;
 }
 
 .container{
@@ -22,13 +30,18 @@ body{
 
 }
 
+
+
+
+
+
 .life-points-container{
     
     padding: 1rem 2rem;
     width: 200px;
      font-size: 2rem;
      border-radius: 1.5rem;
-     background-color: rgba(255, 255, 255, 0.1);
+     background-color: rgba(255, 255, 255);
      backdrop-filter: blur(4px);
     box-shadow: 2px 5px 15px 0px rgba(0,0,0,0.4);
     display: flex;
@@ -48,6 +61,16 @@ body{
 
 }
 
+.btn{
+    background-color: green;
+    padding: 1rem 2rem;
+    color: #FFF;
+    font-size: 1.2rem;
+    border-radius: .5rem;
+    border: none;
+    cursor: pointer;
+}
+
 
     
     
@@ -58,6 +81,7 @@ body{
 
 .life-points-container li:nth-child(2) i{
     color: rgb(135, 185, 185);
+    margin-bottom: 2rem;
 }
 
 
@@ -86,25 +110,29 @@ h1{
 
 .card{
        
-    border-radius: 1rem;
+    border-radius: .5rem;
     width: 180px;
     height: 180px;
     overflow: hidden;
     position: relative;
     transform-style: preserve-3d;
+    background-color: black;    
     transition: .3s;
     perspective: 200px; 
-    
-    
+    cursor: pointer;    
 
 }
 
+.card:hover{
+    box-shadow: 3px 3px 16px rgba(0,0,0,0.6);
+
+}
 
 .card div{
     width: 100%;
     height: 100%;
     position: absolute;     
-    transition: .6s; 
+    transition: .3s; 
     backface-visibility: hidden;    
    
 }
@@ -135,21 +163,34 @@ h1{
     
 }
 
-.card.hidden .front{
-    opacity: 0;
-    visibility: hidden;
-    transition-delay: 1s;
-    
+.card.valid{
+    animation: valid .5s ease-in forwards .5s;
+}
+
+@keyframes valid {
+    0%{
+        transform: rotate(2deg);
+
+    }
+    25%{
+        transform: rotate(-5deg);
+
+    }
+    50%{
+        transform: rotate(2deg);
+
+    }
+    75%{
+        transform: rotate(-5deg);
+
+    }
+    100%{
+        transform: translate(0deg);
+    }
     
 }
 
-.card.hidden .back{
-    opacity: 0;
-    visibility: hidden;
-    transition-delay: 1s;
-    
-    
-}
+
 
 
 
