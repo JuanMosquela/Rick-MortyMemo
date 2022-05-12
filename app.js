@@ -7,6 +7,17 @@ let lifePoints = 12;
 
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    Swal.fire({
+        title: 'Bienvendio al juego de Rick y Morty!',
+        text: 'Encontra todos los pares de personajes para pasar la aventura',
+        imageUrl:'./img/start.jpg',
+        confirmButtonText: 'Cool'
+    })
+
+
+
+
     const loading = (state) => {
         const loader = document.getElementById('loading');
     
@@ -47,8 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
             fragment.appendChild(clone)
         })
     
-        containerCards.appendChild(fragment) 
-        console.log( containerCards)
+        containerCards.appendChild(fragment)        
     }
     
     let validation = []
@@ -74,9 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 lifeContainer.textContent = lifePoints;        
                 if(lifePoints === 0){
                     Swal.fire({
-                        title: 'Error!',
+                        title: 'Perdiste!',
                         text: 'Do you want to continue',
-                        icon: 'error',
+                        imageUrl:'./img/lost.jpg',
                         confirmButtonText: 'Cool'
                     })
                     
@@ -90,18 +100,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 points++;
                 const pointsContainer = document.getElementById('points')        
                 pointsContainer.textContent = points; 
-                console.log(points)
+                
                 if(points === 8){
                     Swal.fire({
+                        imageUrl: './img/Win.jpg',
                         title: 'Ganaste!',
                         text: 'Do you want to continue',
-                        icon: 'success',
+                       
                         confirmButtonText: 'Cool'
-                    })    
-                    
-                } 
-
-                               
+                    })                   
+                }                                
             }      
             
     
