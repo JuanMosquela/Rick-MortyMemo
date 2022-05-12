@@ -74,15 +74,16 @@ document.addEventListener('DOMContentLoaded', () => {
             validation.push(card);           
             
             const wrongCard = () => {    
-                const lifeContainer = document.getElementById('lifes');
+                   
                 lifePoints--;
-                lifeContainer.textContent = lifePoints;        
                 if(lifePoints === 0){
                     Swal.fire({
                         title: 'Perdiste!',
-                        text: 'Do you want to continue',
+                        text: 'Intenta encontrar todas las coincidencias sin perder todas las vidas',
                         imageUrl:'./img/lost.jpg',
-                        confirmButtonText: 'Cool'
+                        focusConfirm: false,
+                        allowOutsideClick: false,
+                        confirmButtonText: 'Seleccionar'
                     })
                     
                     document.querySelectorAll('.card').forEach(card => {
@@ -93,16 +94,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const plusOne = () => {
                 points++;
-                const pointsContainer = document.getElementById('points')        
-                pointsContainer.textContent = points; 
+                
+
+                Toastify({
+                    text: `Coincidencia, tienes ${points} puntos`,
+                    duration: 1000,
+                    destination: "https://github.com/apvarun/toastify-js",
+                    newWindow: true,
+                    close: true,
+                    gravity: "top", 
+                    position: "left", 
+                    stopOnFocus: true, 
+                    style: {
+                      background: "linear-gradient(to right, #00b09b, #96c93d)",
+                      
+                    },
+                    onClick: function(){} 
+                  }).showToast();
                 
                 if(points === 8){
                     Swal.fire({
                         imageUrl: './img/Win.jpg',
                         title: 'Ganaste!',
-                        text: 'Do you want to continue',                       
-                        confirmButtonText: 'Cool'
-                    })                   
+                        text: 'Encontraste todas las coincidecias',
+                        focusConfirm: false,   
+                        allowOutsideClick: false,                    
+                        confirmButtonText: 'Seleccionar',
+
+                    }) 
+                    document.querySelectorAll('.card').forEach(el => el.style.pointerEvents='none');                    
+                    
                 }                                
             }  
             
@@ -116,7 +137,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if(validation[0].dataset.id === validation[1].dataset.id){                    
                     validation.forEach(el => {
                         el.style.pointerEvents = 'none';                        
-                        validCards.push(el);                        
+                        validCards.push(el); 
+                        validCards.forEach(el => el.style.pointerEvents='none')                       
                         el.classList.add('valid');                        
                         validation = []
                         
@@ -124,6 +146,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     plusOne()               
 
                 }else{
+
+                    Toastify({
+                        text: `Tarjeta incorrecta, te quedan ${lifePoints} vidas`,
+                        duration: 1000,
+                        destination: "https://github.com/apvarun/toastify-js",
+                        newWindow: true,
+                        close: true,
+                        gravity: "top", 
+                        position: "left", 
+                        stopOnFocus: true, 
+                        style: {
+                          background: "linear-gradient(to right, #ff0000, #f34f4f)",
+                        },
+                        onClick: function(){} // Callback after click
+                    }).showToast();
+
+
+
                     document.querySelectorAll('.card').forEach(el => el.style.pointerEvents='none');
                     setTimeout(() => {
                         document.querySelectorAll('.card').forEach(el => el.style.pointerEvents='auto');                                              
