@@ -2,8 +2,6 @@ const  containerCards = document.querySelector('.container-cards')
 const cards = document.querySelectorAll('.card')
 const template = document.querySelector('template').content;
 const fragment = document.createDocumentFragment();
-const lifeContainer = document.getElementById('lifes');
-const pointsContainer = document.getElementById('points')  
 let points = 0;
 let lifePoints = 12;
 
@@ -14,11 +12,22 @@ let lifePoints = 12;
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    const loading = (state) => {
+        const loader = document.getElementById('loading');
+    
+        if(state){
+            loader.classList.remove('d-none')
+        }else{
+            loader.classList.add('d-none')
+        }
+    }
+
    
 
     const fetchData = async () => {
     
         try{
+            loading(true)
             const url = await fetch('https://rickandmortyapi.com/api/character/1,2,3,4,5,7,8,636')
     
             const data = await url.json()
@@ -30,9 +39,14 @@ document.addEventListener('DOMContentLoaded', () => {
         catch{
             console.log('error')
         }
+        finally{
+            loading(false)
+        }
     }
     
     fetchData()
+
+    
     
     const printCards = (characterArray) => {
         
@@ -54,13 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', (e) => {  
 
         if(e.target.matches('#reload')){
-            lifePoints = 12;
-            lifeContainer.innerHTML = lifePoints;
-            points= 0;
-            pointsContainer.innerHTML = points;
-            document.querySelectorAll('.card').forEach(el => el.classList.remove('flip'))
-            
-           
+            location.reload()
         } 
         
         
@@ -73,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const wrongCard = () => {
     
-                
+                const lifeContainer = document.getElementById('lifes');
                 lifePoints--;
                 lifeContainer.textContent = lifePoints
         
@@ -110,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                 } 
 
-                      
+                const pointsContainer = document.getElementById('points')        
                 points++;
                 pointsContainer.textContent = points;
                 
@@ -133,8 +141,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         document.querySelectorAll('.card').forEach(el => el.style.pointerEvents='none')
                         el.classList.add('valid')
                         validation = []
-                    })  
-                    plusOne()                
+                    })   
+                    plusOne()               
 
                 }else{
 

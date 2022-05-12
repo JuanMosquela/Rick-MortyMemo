@@ -19,6 +19,11 @@ p{
     color: #FFF;
 }
 
+#loading{
+    color: #FFF;
+    transform: scale(1.6);
+}
+
 .container{
     display: flex;    
     justify-content: center;
@@ -93,7 +98,9 @@ h1{
     overflow: hidden;
     position: relative;
     transform-style: preserve-3d;
-    background-color: black;    
+    background-color: transparent;
+     
+    border: none;   
     transition: .3s;
     perspective: 200px; 
     cursor: pointer;
