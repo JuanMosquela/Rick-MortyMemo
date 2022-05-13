@@ -94,7 +94,8 @@ h1{
 .container-cards{       
     display: grid;
     padding: 1rem;
-    width: 50%;
+    width: 800px;
+    
     
     
     grid-template-columns: repeat(4, 1fr);
@@ -188,27 +189,17 @@ h1{
     
 }
 
-@media (max-width:900px){
-
-    main{
-        width: 100%;
-    }
+@media (max-width:900px){   
 
     .container{
         flex-direction: column;
         padding: 10px;
     }
+
     .container-cards{
         width: 100%;
         padding: 0;
-        
-        
-        
-        
-        
-    }
-
-    
+    }    
 }
 
 @media (max-width:500px){
@@ -216,8 +207,7 @@ h1{
     .container{
         height: 100vh;        
        align-items: center;
-    }
-     
+    }     
 
     .card{
         width: 100%;
@@ -225,10 +215,7 @@ h1{
     }
 
     .life-points-container{
-        background-color: transparent;
-             
-       
-      
+        background-color: transparent;     
         
     }
 

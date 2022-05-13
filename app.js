@@ -6,14 +6,7 @@ let points = 0;
 let lifePoints = 10;
 
 
-document.addEventListener('DOMContentLoaded', () => {
-
-    Swal.fire({
-        title: 'Memorias de Rick y Morty!',
-        text: 'Encontra los parejas de cada personaje para poder ganar',
-        imageUrl:'./img/start.jpg',
-        confirmButtonText: 'Empezar a jugar'
-    })
+document.addEventListener('DOMContentLoaded', () => {   
 
     const loading = (state) => {
         const loader = document.getElementById('loading');
@@ -23,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }else{
             loader.classList.add('d-none')
         }
-    }   
+    }    
 
     const fetchData = async () => {    
         try{
@@ -53,7 +46,22 @@ document.addEventListener('DOMContentLoaded', () => {
             fragment.appendChild(clone)
         })
     
-        containerCards.appendChild(fragment)        
+        containerCards.appendChild(fragment)  
+        document.querySelectorAll('.card').forEach(el => el.classList.add('flip')) 
+        setTimeout(() => {
+            document.querySelectorAll('.card').forEach(el => el.classList.remove('flip')) 
+            
+        }, 700);     
+    }
+
+    const flipCards = () => {
+
+    }
+
+    const disableCards = () => {
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.pointerEvents='none'
+        })
     }
     
     let validation = []
@@ -84,17 +92,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         focusConfirm: false,
                         allowOutsideClick: false,
                         confirmButtonText: 'Seleccionar'
-                    })
+                    })                    
                     
-                    document.querySelectorAll('.card').forEach(card => {
-                        card.style.pointerEvents='none'
-                    })
+                    disableCards()
                 }
             }         
 
             const plusOne = () => {
-                points++;
-                
+                points++;                
 
                 Toastify({
                     text: `Coincidencia, tienes ${points} puntos`,
@@ -122,8 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         confirmButtonText: 'Seleccionar',
 
                     }) 
-                    document.querySelectorAll('.card').forEach(el => el.style.pointerEvents='none');                    
-                    
+                    disableCards()                     
                 }                                
             }  
             
@@ -140,8 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         validCards.push(el); 
                         validCards.forEach(el => el.style.pointerEvents='none')                       
                         el.classList.add('valid');                        
-                        validation = []
-                        
+                        validation = []                        
                     })   
                     plusOne()               
 
@@ -159,12 +162,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         style: {
                           background: "linear-gradient(to right, #ff0000, #f34f4f)",
                         },
-                        onClick: function(){} // Callback after click
+                        onClick: function(){} 
                     }).showToast();
 
-
-
-                    document.querySelectorAll('.card').forEach(el => el.style.pointerEvents='none');
+                    disableCards();
                     setTimeout(() => {
                         document.querySelectorAll('.card').forEach(el => el.style.pointerEvents='auto');                                              
                         validation.forEach(el => el.classList.remove('flip'));                    
