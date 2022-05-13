@@ -35,7 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    fetchData()    
+    fetchData()  
+    
+    //Funcion que itera e imprime cada personaje
     
     const printCards = (characterArray) => {        
         characterArray.sort(() => {
@@ -54,9 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 700);     
     }
 
-    const flipCards = () => {
-
-    }
+    //Esta funcion desabilita el click en las cards
+   
 
     const disableCards = () => {
         document.querySelectorAll('.card').forEach(card => {
@@ -72,14 +73,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     document.addEventListener('click', (e) => { 
+
+        //Evento que refresca la pagina
+
         if(e.target.matches('#reload')){
             refreshPage()
-        }         
+        } 
+        
+        //Evento de desencadena la validacion de las cards
         
         if(e.target.matches('.card') || e.target.matches('.card *')){    
             const card = e.target.parentElement.parentElement;   
             card.classList.add('flip');    
-            validation.push(card);           
+            validation.push(card); 
+            
+            //Si las carss no coinciden, hacemos esto:
             
             const wrongCard = () => {    
                    
@@ -96,7 +104,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     disableCards()
                 }
-            }         
+            } 
+            
+            //Si coinciden, se activa esta funcion:
 
             const plusOne = () => {
                 points++;                
@@ -133,10 +143,14 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if(validation.length === 1){
                 validation[0].style.pointerEvents='none'
-            }            
+            } 
+
+
     
             if(validation.length === 2){ 
-                validation.forEach(el => el.style.pointerEvents='auto')   
+                validation.forEach(el => el.style.pointerEvents='auto') 
+                
+                //Si las dos cards seleccionadas coinciden hacemos esto:
 
                 if(validation[0].dataset.id === validation[1].dataset.id){                    
                     validation.forEach(el => {
