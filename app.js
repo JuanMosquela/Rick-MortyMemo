@@ -13,22 +13,20 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const url = await fetch('https://rickandmortyapi.com/api/character/1,2,3,4,5,7,8,636');    
             const data = await url.json()
-            const characters = data;        
-            const characterArray = [...characters, ...characters];          
-            printCards(characterArray);
+                   
+            const characters = [...data, ...data];          
+            printCards(characters);
         }    
         catch{
             console.log('error')
-        }
-        
-    }
-    
+        }        
+    }   
       
     
     //Funcion que itera e imprime cada personaje
     
-    const printCards = (characterArray) => {        
-        characterArray.sort(() => {
+    const printCards = (characters) => {        
+        characters.sort(() => {
             return Math.random() - 0.5 }).forEach(character => {
             const clone = template.cloneNode(true)        
             clone.querySelector('img').setAttribute('src', character.image);
@@ -44,8 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 700);     
     }
 
-    //Esta funcion desabilita el click en las cards
-   
+    //Esta funcion desabilita el click en las cards   
 
     const disableCards = () => {
         document.querySelectorAll('.card').forEach(card => {
@@ -53,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
     
-    let validation = []
+    let checkCards = []
     const validCards = []
 
     const refreshPage = () => {
@@ -84,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(e.target.matches('.card') || e.target.matches('.card *')){    
             const card = e.target.parentElement.parentElement;   
             card.classList.add('flip');    
-            validation.push(card); 
+            checkCards.push(card); 
             
             //Si las carss no coinciden, hacemos esto:
             
@@ -140,24 +137,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 }                                
             }  
             
-            if(validation.length === 1){
-                validation[0].style.pointerEvents='none'
-            } 
+            if(checkCards.length === 1){
+                checkCards[0].style.pointerEvents='none'
+            }
 
-
-    
-            if(validation.length === 2){ 
-                validation.forEach(el => el.style.pointerEvents='auto') 
+            if(checkCards.length === 2){ 
+                checkCards.forEach(el => el.style.pointerEvents='auto') 
                 
                 //Si las dos cards seleccionadas coinciden hacemos esto:
 
-                if(validation[0].dataset.id === validation[1].dataset.id){                    
-                    validation.forEach(el => {
+                if(checkCards[0].dataset.id === checkCards[1].dataset.id){                    
+                    checkCards.forEach(el => {
                         el.style.pointerEvents = 'none';                        
                         validCards.push(el); 
                         validCards.forEach(el => el.style.pointerEvents='none')                       
                         el.classList.add('valid');                        
-                        validation = []                        
+                        checkCards = []                        
                     })   
                     plusOne()               
 
@@ -181,9 +176,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     disableCards();
                     setTimeout(() => {
                         document.querySelectorAll('.card').forEach(el => el.style.pointerEvents='auto');                                              
-                        validation.forEach(el => el.classList.remove('flip'));                    
+                        checkCards.forEach(el => el.classList.remove('flip'));                    
                         wrongCard();
-                        validation = []                        
+                        checkCards = []                        
                         
                     }, 1000);                
                 }               
