@@ -6,21 +6,11 @@ let points = 0;
 let lifePoints = 10;
 
 
-document.addEventListener('DOMContentLoaded', () => {   
-
-    const loading = (state) => {
-        const loader = document.getElementById('loading');
-    
-        if(state){
-            loader.classList.remove('d-none')
-        }else{
-            loader.classList.add('d-none')
-        }
-    }    
+document.addEventListener('DOMContentLoaded', () => {     
 
     const fetchData = async () => {    
         try{
-            loading(true);
+            
             const url = await fetch('https://rickandmortyapi.com/api/character/1,2,3,4,5,7,8,636');    
             const data = await url.json()
             const characters = data;        
@@ -30,12 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
         catch{
             console.log('error')
         }
-        finally{
-            loading(false)
-        }
+        
     }
     
-    fetchData()  
+      
     
     //Funcion que itera e imprime cada personaje
     
@@ -72,7 +60,18 @@ document.addEventListener('DOMContentLoaded', () => {
         location.reload()
     }
     
-    document.addEventListener('click', (e) => { 
+    document.addEventListener('click', (e) => {
+        
+        if(e.target.matches('#start')){
+            const startPage = document.querySelector('.container-options');
+            startPage.style.display = 'none';
+            fetchData()
+        }
+
+        if(e.target.matches('#exit')){
+            window.close()
+            
+       }
 
         //Evento que refresca la pagina
 

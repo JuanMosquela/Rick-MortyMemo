@@ -15,39 +15,46 @@
 <body>
 
    <main>
-        <section class="container">
 
-            <div class="d-flex align-items-center d-none c-light fs-1" id="loading">
-                
-                <div class="spinner-border ms-auto" role="status" aria-hidden="true">
-                </div>
-            </div>
-            
-            <div class="container-cards"></div>
+    <div class="container-options">
+        <div class="content">
+            <h1>Memorama de Rick y morty</h1>
+            <p>Bievendio al juego de Rick y Morty, donde deberas encontrar todas las coincidencias para poder superar la aventura</p>
+            <button id="start">Empezar a jugar</button>
+            <button id="exit">Salir del juego</button>
+        </div>
+        <figure>
+            <img src="./img/start.jpg" alt="">
+        </figure>
         
-            <!-- <div class="life-points-container">
-                <div class="points-container">
-                    <li><i class="fa-solid fa-heart"></i><span id="lifes">12</span></li>
-                    <li><i class="fa-solid fa-coins"></i><span id="points">0</span></li>
-                </div>
-                
-            </div> -->
-            <button id="reload" class="btn">Volver a jugar</button>
+    </div>
+
+
+    <section class="container">            
             
-        </section>
+        <div class="container-cards"></div>         
 
-        <template>
-            <div class="card">
-                <div class="front">
-                    <img src="./img/images.jfif" alt="">               
-                </div>
-                <div class="back">
-                    <img src="./img/back.jpg" alt="">
-                </div>
+        <button id="reload" class="btn">Volver a jugar</button>
+        
+    </section>
+
+    <template>
+        <div class="card">
+            <div class="front">
+                <img src="./img/images.jfif" alt="">               
             </div>
+            <div class="back">
+                <img src="./img/back.jpg" alt="">
+            </div>
+        </div>
 
 
-        </template>
+    </template>
+
+
+
+
+        
    </main>
 
 
