@@ -12,8 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try{
             
             const url = await fetch('https://rickandmortyapi.com/api/character/1,2,3,4,5,7,8,636');    
-            const data = await url.json()
-                   
+            const data = await url.json()                   
             const characters = [...data, ...data];          
             printCards(characters);
         }    
