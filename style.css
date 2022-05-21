@@ -6,6 +6,12 @@
     outline: none;
     list-style: none;
 }
+
+html{
+    font-size: 65.2%;
+}
+
+
 body{
     background: url(./img/background.jpg) center no-repeat;
     background-size: cover;
